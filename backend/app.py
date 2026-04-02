@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from ml.predict import predict_status
+import ml.predict
 from pymongo import MongoClient
 from datetime import datetime
 
@@ -11,6 +11,10 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["dialysense"]
 collection = db["sensor_data"]
 
+@app.route('/')
+def home():
+    return "Server is running!"
+
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
@@ -19,7 +23,7 @@ def predict():
     flow_rate = float(data['flow_rate'])
     water_level = float(data['water_level'])
 
-    result = predict_status(temperature, flow_rate, water_level)
+    result = ml.predict.predict_status(temperature, flow_rate, water_level)
 
     # Save to database
     record = {
