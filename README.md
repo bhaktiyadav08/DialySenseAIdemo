@@ -173,7 +173,6 @@ Open `http://localhost:5173`
 Run the simulator to send fake sensor data to Flask:
  
 ```bash
-cd backend
 python ml/simulator.py
 ```
  
