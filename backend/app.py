@@ -21,7 +21,7 @@ db = client["dialysense"]
 collection = db["sensor_data"]
 
 # ── ESP32 Config ─────────────────────────────────────────────────────────────
-ESP32_IP = os.environ.get("ESP32_IP", "10.248.152.246")   # change or set env var
+ESP32_IP = os.environ.get("ESP32_IP", "10.81.254.246")   # change or set env var
 ESP32_URL = f"http://{ESP32_IP}/json"
 POLL_INTERVAL = 2   # seconds
 

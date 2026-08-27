@@ -47,7 +47,7 @@ export default function ManualPredict() {
             />
           </div>
           <div className="form-group">
-            <label className="form-label">FLOW RATE (L/min)</label>
+            <label className="form-label">FLOW RATE (mL/min)</label>
             <input 
               type="number" step="0.1" name="flow_rate" 
               value={formData.flow_rate} onChange={handleChange} 

@@ -10,13 +10,20 @@ model_path = os.path.join(current_dir, '../models/model.pkl')
 model = joblib.load(model_path)
 
 def predict_status(temperature, flow_rate, water_level):
+    
+        
+        
     try:
         # Convert to float to be safe
         t, f, l = float(temperature), float(flow_rate), float(water_level)
+                # DS18B20 returns -127 on sensor failure
+        if t < -50:
+            return "sensor_error"
+
         data = np.array([[t, f, l]])
         
         prediction = model.predict(data)[0]
-
+       
         # THIS PRINT IS CRITICAL - CHECK YOUR TERMINAL FOR THIS:
         print(f"\n--- ML DEBUG ---")
         print(f"Inputs: Temp={t}, Flow={f}, Level={l}")
@@ -74,10 +81,10 @@ def explain_status(temperature, flow_rate, water_level, status):
             actions.append("Verify heating elements and thermostat connections.")
             
         if flow_rate < 300:
-            explanation.append(f"Flow rate critically low at {flow_rate} L/min.")
+            explanation.append(f"Flow rate critically low at {flow_rate} mL/min.")
             actions.append("Inspect primary inlet port for physical blockages or pump failure.")
         elif flow_rate > 1244:
-            explanation.append(f"Flow rate dangerously high ({flow_rate} L/min).")
+            explanation.append(f"Flow rate dangerously high ({flow_rate} mL/min).")
             actions.append("Recalibrate main pressure valve and check for pipe ruptures.")
             
         if water_level < 5:

@@ -15,7 +15,7 @@ export default function HistoryTable({ history }) {
         <table className="history__table">
           <thead>
             <tr>
-              {["TIME", "TEMP (°C)", "FLOW (L/min)", "LEVEL (cm)", "ML STATUS", "ESP32"].map(h => (
+              {["TIME", "TEMP (°C)", "FLOW (mL/min)", "LEVEL (cm)", "ML STATUS", "ESP32"].map(h => (
                 <th key={h}>{h}</th>
               ))}
             </tr>

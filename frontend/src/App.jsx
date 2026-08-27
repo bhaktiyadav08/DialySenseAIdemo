@@ -54,7 +54,7 @@ export default function App() {
             />
             <SensorCard
               label="FLOW RATE" icon="💧"
-              value={latest?.flow_rate} unit="L/min"
+              value={latest?.flow_rate} unit="mL/min"
               min={0} max={1500} color="#38bdf8" warnAt={1244}
               subtitle="Fault zone: 300–600 or >1244"
             />

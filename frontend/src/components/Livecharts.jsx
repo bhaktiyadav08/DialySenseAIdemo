@@ -49,7 +49,7 @@ export default function LiveCharts({ history }) {
   return (
     <div className="grid-3">
       <MiniChart data={data} dataKey="temperature" color="#f59e0b" label="TEMPERATURE" unit="°C"    />
-      <MiniChart data={data} dataKey="flow_rate"   color="#38bdf8" label="FLOW RATE"   unit="L/min" />
+      <MiniChart data={data} dataKey="flow_rate"   color="#38bdf8" label="FLOW RATE"   unit="mL/min" />
       <MiniChart data={data} dataKey="water_level" color="#818cf8" label="OUTLET LEVEL" unit="cm"  />
     </div>
   );
